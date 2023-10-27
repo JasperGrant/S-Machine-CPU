@@ -1,10 +1,12 @@
 module ALU (
     input inst[15:0],
+    
     input [15:0] register_A_in,
     input [15:0] register_B_in,
     input Z_in,
     input N_in,
     input C_in,
+
     output reg [15:0] register_A_out,
     output reg [15:0] register_B_out,
     output reg Z_out,
