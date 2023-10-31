@@ -1,12 +1,15 @@
+//ALU Implementation for S-Machine CPU
+//By Duncan Cameron and Jasper Grant
+//B00829263
+//2023-10-31
+
 module ALU (
-    input inst[15:0],
-    
+    input [15:0] inst,
     input [15:0] register_A_in,
     input [15:0] register_B_in,
     input Z_in,
     input N_in,
     input C_in,
-
     output reg [15:0] register_A_out,
     output reg [15:0] register_B_out,
     output reg Z_out,
@@ -14,9 +17,9 @@ module ALU (
     output reg C_out
 );
 
-    reg temp[15:0];
+    reg [15:0] temp;
 
-    reg [7:0] carry_matrix = 8b'00101011;// TODO: Could this be a parameter?
+    reg [7:0] carry_matrix = 8'b00101011;// TODO: Could this be a parameter?
 
     //On every instruction input change decide which logic should be followed or whether ALU should not be used
     always @(inst) begin
@@ -61,14 +64,14 @@ module ALU (
                 N_out = register_A_out[15];
                 C_out = carry_matrix[{register_A_in[15], register_B_in[15], register_A_out[15]}];
             end
-            4'1001: //SHR instruction
+            4'b1001: //SHR instruction
             begin
                 //Carry bit recieves value of reg_A[0], other bits remain the same
                 C_out = register_A_in[0];
                 Z_out = Z_in;
                 N_out = N_in;
                 //Add 0 as [15] and then put digits 15-1 into spots 14-0
-                register_A_out = {0, register_A_in[15:1]}
+                register_A_out = {1'b0, register_A_in[15:1]};
             end
             4'b1010: //MOV instruction
             begin
@@ -76,7 +79,7 @@ module ALU (
                 register_B_out = register_A_in;
                 //Status bits remain the same
                 Z_out = Z_in;
-                N_in = N_in;
+                N_out = N_in;
                 C_out = C_in;
             end
             4'b1011: //EXCH instruction
@@ -94,9 +97,9 @@ module ALU (
                 //Perform subtraction with discarded output
                 temp = register_A_in - register_B_in;
                 //Standard set ZNC bits
-                Z_out = register_A_out == 0;
-                N_out = register_A_out[15];
-                C_out = carry_matrix[{register_A_in[15], register_B_in[15], register_A_out[15]}];
+                Z_out = temp == 0;
+                N_out = temp[15];
+                C_out = carry_matrix[{register_A_in[15], register_B_in[15], temp[15]}];
             end
             4'b1101: //SET instruction
             begin
@@ -118,7 +121,7 @@ module ALU (
                 register_A_out = register_A_in;
                 register_B_out = register_B_in;
                 Z_out = Z_in;
-                N_in = N_in;
+                N_out = N_in;
                 C_out = C_in;
             end
         endcase
