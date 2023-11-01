@@ -24,6 +24,20 @@ module ALU (
     //On every instruction input change decide which logic should be followed or whether ALU should not be used
     always @(inst) begin
         case(inst[15:12])
+            4'b0010: //INC instruction
+            begin
+                //TODO: check if 2s complement is needed to handle negatives
+                if(inst[11]) begin
+                    register_B_out = register_B_in + inst[7:0];
+                end
+                else begin
+                    register_A_out = register_A_in + inst[7:0];
+                end
+                //Standard set ZNC bits
+                Z_out = register_A_out == 0;
+                N_out = register_A_out[15];
+                C_out = carry_matrix[{register_A_in[15], register_B_in[15], register_A_out[15]}];
+            end
             4'b0100: //ADD instruction
             begin
                 register_A_out = register_A_in + register_B_in;
