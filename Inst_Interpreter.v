@@ -32,6 +32,7 @@ module InstInterpreter (
       	register_A = 0;
       	register_B = 0;
         PC = 0;
+        done = 0;
     end
 
     //On every instruction input change decide which logic should be followed
