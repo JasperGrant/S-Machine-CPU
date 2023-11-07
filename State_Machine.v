@@ -28,7 +28,8 @@ States:
 
 module StateMachine(enable,done,start,count);
     input enable, done;	
-    output start, count;	
+    output reg start;
+	output reg [7:0] count;	
 	//reg O;	
 	reg [2:0] state;
 
@@ -36,36 +37,50 @@ module StateMachine(enable,done,start,count);
               s1 = 2'b01,			  
 	 	      s2 = 2'b10;
 
-    always@(posedge done)	
+	initial begin
+		state = s0;
+		count = 0;
+		start = 0;
+	end
+
+    always@(done)	
 	begin	      
 		  begin		   
 		    case(state)
             s0:			 
 			  begin		               				
-				  if(enable == 1'b1)				  
-				    state <= s1;				
-				  else				  
-				    state <= s0;                          
+				if(enable == 1'b1) begin			  
+					state <= s1;
+				end			
+				else begin				  
+				    state <= s0;    
+			  	end                      
 			   end
 			   
 			s1:			 
 			  begin
-                  start <= 1'b1;			               	
+                  start <= 1'b1;
+				  #1
+				  start <= 1'b0;			               	
                   count = count+1;
 
-				  if(done == 1'b1)				  
-				    state <= s1;				
-				  else				  
-				    state <= s2;                          
+				  if(done == 1'b1) begin			  
+				    state <= s1;
+				  end			
+				  else begin
+				    state <= s2;
+				  end                    
 			   end
 			   
 			s2:			 
 			  begin		 
                  start <= 1'b0;	        //reset start since we don't want it to start       				
-				  if(done == 1'b1)				  
-				    state <= s1;	   // If done received go back to s1		
-				  else				  
-				    state <= s2;       //stay in s2 if done not received                   
+				  if(done == 1'b1) begin			  
+				    state <= s1;	   // If done received go back to s1
+				  end	
+				  else begin
+				    state <= s2;       //stay in s2 if done not received  
+				  end                 
 			   end
                endcase
 		end
