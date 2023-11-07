@@ -5,6 +5,8 @@
 
 /*
 States:
+    Reset
+        Reset everything and bring PC to 0
     Fetch
         Get instruction at PC (Starts at 0)
         Increment PC by 1
@@ -15,11 +17,15 @@ States:
             If ALU inst update registers A, B, bits ZNC bits
             If Branch inst possibly update PC based on ZNC bits
             If LD/ST inst update register/memory based on possible immediate
-            
+Repeat
+
 */
 
 module StateMachine(
 
 );
+
+    reg [15:0] inst;
+
 
 endmodule

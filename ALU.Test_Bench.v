@@ -7,7 +7,6 @@
 module test;
     reg [15:0] inst;
 
-
     reg [15:0] register_A_in;
     reg [15:0] register_B_in;
     reg Z_in;
@@ -44,6 +43,8 @@ module test;
       inst = 16'b0100000000000000; register_A_in = 1; register_B_in = 1; display;
       //Test 2: Subtracting 1 - 1
       inst = 16'b0101000000000000; register_A_in = 1; register_B_in = 1; display;
+      //Test 3: Shift right 1 once
+      inst = 16'b1001000000000000; register_A_in = 2; display;
     end
     
 

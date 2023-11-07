@@ -13,7 +13,7 @@ module DataMemory(
 
     reg [15:0] memory [255:0];
 
-    always@(posedge clk) begin
+    always@(posedge clk, addr) begin
         if(read_write == 0) begin
             data_out = memory[addr];
         end

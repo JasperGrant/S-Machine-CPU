@@ -10,8 +10,11 @@ module InstMemory(
 );
 
     reg [15:0] memory [255:0];
+    //Where we define our code
+    memory[0] = 16'b0100000000000000;
+    memory[1] = 16'b0100000000000000;
 
-    always@(posedge clk) begin
+    always@(posedge clk, addr) begin
         data_out = memory[addr];
     end
 
