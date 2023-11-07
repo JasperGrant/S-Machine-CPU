@@ -3,13 +3,14 @@
 //B00829263
 //2023-10-31
 
-module ALU (
+module InstInterpreter (
     input [15:0] inst,
     input start,
 
     input [15:0] data_in_memory,
-    input read_write_memory,
+    output reg read_write_memory,
     output reg [15:0] data_out_memory,
+    output reg [7:0] addr,
 
     output reg done,
     output reg [7:0] PC
@@ -20,24 +21,25 @@ module ALU (
     reg Z = 0, N = 0, C = 0;
 
     //Declare A and B registers
-    reg [15:0] register_A = 0;
-    reg [15:0] register_B = 0;
+    reg [15:0] register_A;
+  	reg [15:0] register_B;
 
     reg [15:0] register_temp = 0;
 
     reg [7:0] carry_matrix = 8'b00101011;// TODO: Could this be a parameter?
 
     initial begin
+      	register_A = 0;
+      	register_B = 0;
         PC = 0;
     end
 
-    //On every instruction input change decide which logic should be followed or whether ALU should not be used
-    always @(posedge start, inst) begin
-        //Clear done
-        done = 0;
+    //On every instruction input change decide which logic should be followed
+    always @(inst, posedge start) begin
         PC = PC + 1;
         //Store backup for register A in temp
         register_temp = register_A;
+      
         case(inst[15:12])
             4'b0010: //INC instruction
             begin
@@ -135,9 +137,42 @@ module ALU (
                 N = inst[9] ? 0 : N;
                 C = inst[8] ? 0 : C;
             end
-
+            4'b0000: //LD instruction
+            begin
+                if(inst[11]) begin
+                    if(inst[10]) begin
+                      register_B = inst[9] ? {inst[7:0], 8'b00000000} : {8'b00000000, inst[7:0]};
+                    end
+                    else begin
+                        //Fool with timing
+                        read_write_memory = 0;
+                        addr = inst[7:0];
+                        register_B = data_in_memory;
+                    end
+                end
+                else begin
+                    if(inst[10]) begin
+                      register_A = inst[9] ? {inst[7:0], 8'b00000000} : {8'b00000000, inst[7:0]};
+                    end
+                    else begin
+                        //Fool with timing
+                        read_write_memory = 0;
+                        addr = inst[7:0];
+                        register_A = data_in_memory;
+                    end
+                end
+            end
+            4'b0001: //ST instruction
+            begin
+                read_write_memory = 1;
+                addr = inst[7:0];
+                data_out_memory = inst[11] ? register_B : register_A;
+            end
         endcase
+        //Flash done
         done = 1;
+      	#1
+      	done = 0;
     end
     
 endmodule
