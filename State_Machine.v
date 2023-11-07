@@ -5,38 +5,74 @@
 
 /*
 States:
-    S0:Reset
-        Reset everything 
-        bring PC to 0
-        Set Start = 0
-        
+    S0:enable
+        Set start = 0
+
+        if Enable = 1 move to state S1
+        if Enable = 0 stay at state S0
+
     S1:Handle
-        Set Start = 1
+        Set start = 1
+        Increment count
 
         If done=0 go to S2
         If done=1 stay as S1
 
     S2:Notdone
-        Set Start = 0
+        Set start = 0
 
         If done=0 stay
         if done =1 go to S1
 
 */
 
-module StateMachine(
-    input  clk,rst,I;	
-	output O;	
-	reg O;	
+module StateMachine(enable,done,start,count);
+    input enable, done;	
+    output start, count;	
+	//reg O;	
 	reg [2:0] state;
 
-);
+    parameter s0 = 2'b00,	                
+              s1 = 2'b01,			  
+	 	      s2 = 2'b10;
 
-    
+    always@(posedge done)	
+	begin	      
+		  begin		   
+		    case(state)
+            s0:			 
+			  begin		               				
+				  if(enable == 1'b1)				  
+				    state <= s1;				
+				  else				  
+				    state <= s0;                          
+			   end
+			   
+			s1:			 
+			  begin
+                  start <= 1'b1;			               	
+                  count = count+1;
 
-
+				  if(done == 1'b1)				  
+				    state <= s1;				
+				  else				  
+				    state <= s2;                          
+			   end
+			   
+			s2:			 
+			  begin		 
+                 start <= 1'b0;	        //reset start since we don't want it to start       				
+				  if(done == 1'b1)				  
+				    state <= s1;	   // If done received go back to s1		
+				  else				  
+				    state <= s2;       //stay in s2 if done not received                   
+			   end
+               endcase
+		end
+	end
+        	
 endmodule
-
+/*
 module moore_machine(clk,rst,I,O);  
     input  clk,rst,I;	
 	output O;	
