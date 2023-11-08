@@ -29,6 +29,7 @@ module InstInterpreter (
     reg [7:0] carry_matrix = 8'b00101011;// TODO: Could this be a parameter?
 
     initial begin
+        #2;
       	register_A = 0;
       	register_B = 0;
         PC = 0;
@@ -172,7 +173,7 @@ module InstInterpreter (
         endcase
         //Flash done
         done = 1;
-      	#1
+      	#2
       	done = 0;
     end
     

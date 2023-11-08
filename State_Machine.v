@@ -60,7 +60,7 @@ module StateMachine(enable,done,start,count);
 			s1:			 
 			  begin
                   start <= 1'b1;
-				  #1
+				  #2
 				  start <= 1'b0;			               	
                   count = count+1;
 

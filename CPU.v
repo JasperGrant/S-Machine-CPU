@@ -26,6 +26,7 @@ module CPU(
 
 
 InstInterpreter interpreter(
+    .start(start),
     .inst(inst),
 
     .data_in_memory(data_in_memory),
