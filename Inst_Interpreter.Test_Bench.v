@@ -3,8 +3,9 @@
 //B00829263
 //2023-10-31
 
+`timescale 1ns / 1ns
 
-module test;
+module test_Inst;
     reg [15:0] inst;
     reg start;
 
@@ -17,6 +18,7 @@ module test;
     wire [7:0] PC;
 
     InstInterpreter interpreter(
+        .start(start),
         .inst(inst),
 
         .data_in_memory(data_in_memory),
@@ -31,7 +33,7 @@ module test;
 
     initial begin
       $dumpfile("wave.vcd");
-      $dumpvars(0, test);
+      $dumpvars(0, test_Inst);
 
       //Test 1: Load value from immediate
       #5

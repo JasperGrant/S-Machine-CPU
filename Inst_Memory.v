@@ -3,9 +3,11 @@
 //B00829263
 //2023-11-01
 
+`timescale 1ns / 1ns
+
 module InstMemory(
     input [7:0] PC,
-    output [15:0] inst
+    output reg [15:0] inst
 );
 
     reg [15:0] memory [255:0];
@@ -20,9 +22,10 @@ module InstMemory(
         memory[5] = 16'b0110000000000000;
         memory[6] = 16'b0111000000000000;
         memory[7] = 16'b1000000000000000;
-
     end
 
-    assign inst = memory[PC];
+    always @(PC) begin
+        inst = memory[PC];
+    end
 
 endmodule

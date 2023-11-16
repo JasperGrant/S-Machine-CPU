@@ -3,6 +3,8 @@
 //B00829263
 //2023-11-01
 
+`timescale 1ns / 1ns
+
 module DataMemory(
     input read_write,
     input [15:0] data_in_memory,

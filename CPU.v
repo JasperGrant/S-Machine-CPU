@@ -3,6 +3,8 @@
 //B00819540, B00829263 
 //2023-11-07
 
+`timescale 1ns / 1ns
+
 `include "Inst_Interpreter.v"
 `include "State_Machine.v"
 

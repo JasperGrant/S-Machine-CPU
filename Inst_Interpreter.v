@@ -3,6 +3,8 @@
 //B00829263
 //2023-10-31
 
+`timescale 1ns / 1ns
+
 module InstInterpreter (
     input [15:0] inst,
     input start,
@@ -38,6 +40,7 @@ module InstInterpreter (
 
     //On every instruction input change decide which logic should be followed
     always @(inst, posedge start) begin
+        #1
         PC = PC + 1;
         //Store backup for register A in temp
         register_temp = register_A;

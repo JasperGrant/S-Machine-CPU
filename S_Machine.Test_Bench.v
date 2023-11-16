@@ -3,7 +3,9 @@
 //B00819540, B00829263 
 //2023-11-07
 
-module test;
+`timescale 1ns / 1ns
+
+module test_S_Machine;
     reg enable;
     wire [7:0] count;
 
@@ -14,11 +16,11 @@ module test;
 
     initial begin
         $dumpfile("wave.vcd");
-        $dumpvars(0, test);
+        $dumpvars(0, test_S_Machine);
 
     #1
     enable = 1;
-    #20
+    #299
     ;
     end
 

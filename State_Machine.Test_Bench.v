@@ -3,8 +3,9 @@
 //B00829263
 //2023-11-07
 
+`timescale 1ns / 1ns
 
-module test;
+module test_FSM;
     reg enable, done;
     wire [7:0] count;
     wire start;
@@ -18,7 +19,7 @@ module test;
 
     initial begin
         $dumpfile("wave.vcd");
-        $dumpvars(0, test);
+        $dumpvars(0, test_FSM);
         enable = 0; done = 0;
         #5
         enable = 1;

@@ -3,6 +3,8 @@
 //B00819540, B00829263 
 //2023-11-07
 
+`timescale 1ns / 1ns
+
 `include "CPU.v"
 `include "Inst_Memory.v"
 `include "Data_Memory.v"

@@ -3,8 +3,9 @@
 //B00819540, B00829263 
 //2023-11-07
 
+`timescale 1ns / 1ns
 
-module test;
+module test_CPU;
 
     reg [15:0] inst;
 
@@ -31,9 +32,9 @@ module test;
 
     initial begin
         $dumpfile("wave.vcd");
-        $dumpvars(0, test);
+        $dumpvars(0, test_CPU);
 
-    #5
+    #1
     enable = 1;
     //Test 1: Load value from immediate
     #5
