@@ -1,8 +1,7 @@
 onerror {resume}
 quietly WaveActivateNextPane {} 0
-add wave -noupdate /test_CPU/CPU/done
+add wave -noupdate /test_CPU/clk
 add wave -noupdate /test_CPU/CPU/inst
-add wave -noupdate /test_CPU/CPU/start
 add wave -noupdate -radix decimal /test_CPU/CPU/interpreter/register_A
 add wave -noupdate -radix decimal /test_CPU/CPU/interpreter/register_B
 add wave -noupdate -radix decimal /test_CPU/CPU/PC
@@ -23,4 +22,4 @@ configure wave -griddelta 40
 configure wave -timeline 0
 configure wave -timelineunits ns
 update
-WaveRestoreZoom {0 ns} {50 ns}
+WaveRestoreZoom {0 ns} {37 ns}

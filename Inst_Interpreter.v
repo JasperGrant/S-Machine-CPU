@@ -27,7 +27,7 @@ module InstInterpreter (
 
     reg [15:0] register_temp = 0;
 
-    reg [7:0] carry_matrix = 8'b00101011;// TODO: Could this be a parameter?
+    reg [7:0] carry_matrix = 8'b11010100;// TODO: Could this be a parameter?
 
     initial begin
         #2;
@@ -37,7 +37,7 @@ module InstInterpreter (
     end
 
     //On every instruction input change decide which logic should be followed
-    always @(inst, posedge clk) begin
+    always @(posedge clk) begin
         #1
         PC = PC + 1;
         //Store backup for register A in temp

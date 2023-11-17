@@ -11,6 +11,7 @@
 
 module SMachine(
     input enable,
+    input clk,
     output [7:0] count
 );
 
@@ -23,6 +24,7 @@ module SMachine(
     wire [7:0] PC;
 
     CPU cpu(
+        .clk(clk),
         .inst(inst),
         .enable(enable),
         .data_in_memory(data_in_memory),

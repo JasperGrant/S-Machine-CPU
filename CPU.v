@@ -9,6 +9,7 @@
 `include "State_Machine.v"
 
 module CPU(
+    input clk,
     input [15:0] inst,
 
     input enable,
@@ -23,12 +24,8 @@ module CPU(
     output [7:0] count
 );
 
-    wire done;
-    wire start;
-
-
 InstInterpreter interpreter(
-    .start(start),
+    .clk(clk),
     .inst(inst),
 
     .data_in_memory(data_in_memory),
@@ -36,13 +33,11 @@ InstInterpreter interpreter(
     .data_out_memory(data_out_memory),
     .addr(addr),
 
-    .done(done),
     .PC(PC)
 );
 
 StateMachine fsm(
-    .start(start),
-    .done(done),
+    .clk(clk),
     .enable(enable),
     .count(count)
 );

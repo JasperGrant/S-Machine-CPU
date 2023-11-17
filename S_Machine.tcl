@@ -4,8 +4,8 @@ vlib work;
 
 vlog *.v
 
-vsim work.test_Inst -Lf 220model_ver -Lf altera_mf_ver -Lf verilog
+vsim work.test_S_Machine -Lf 220model_ver -Lf altera_mf_ver -Lf verilog
 
 do S_Machine.do
 
-run 300ns
+run 100ns

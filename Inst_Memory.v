@@ -7,7 +7,7 @@
 
 module InstMemory(
     input [7:0] PC,
-    output reg [15:0] inst
+    output [15:0] inst
 );
 
     reg [15:0] memory [255:0];
@@ -24,8 +24,6 @@ module InstMemory(
         memory[7] = 16'b1000000000000000;
     end
 
-    always @(PC) begin
-        inst = memory[PC];
-    end
+    assign inst = memory[PC];
 
 endmodule
