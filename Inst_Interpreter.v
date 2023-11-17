@@ -7,14 +7,13 @@
 
 module InstInterpreter (
     input [15:0] inst,
-    input start,
+    input clk,
 
     input [15:0] data_in_memory,
     output reg read_write_memory,
     output reg [15:0] data_out_memory,
     output reg [7:0] addr,
 
-    output reg done,
     output reg [7:0] PC
 
 );
@@ -35,11 +34,10 @@ module InstInterpreter (
       	register_A = 0;
       	register_B = 0;
         PC = 0;
-        done = 0;
     end
 
     //On every instruction input change decide which logic should be followed
-    always @(inst, posedge start) begin
+    always @(inst, posedge clk) begin
         #1
         PC = PC + 1;
         //Store backup for register A in temp
@@ -174,10 +172,6 @@ module InstInterpreter (
                 data_out_memory = inst[11] ? register_B : register_A;
             end
         endcase
-        //Flash done
-        done = 1;
-      	#2
-      	done = 0;
     end
     
 endmodule

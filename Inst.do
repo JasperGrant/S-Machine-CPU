@@ -1,10 +1,9 @@
 onerror {resume}
 quietly WaveActivateNextPane {} 0
-add wave -noupdate /test_Inst/done
 add wave -noupdate /test_Inst/inst
-add wave -noupdate /test_Inst/start
-add wave -noupdate /test_Inst/interpreter/register_A
-add wave -noupdate /test_Inst/interpreter/register_B
+add wave -noupdate /test_Inst/clk
+add wave -noupdate -radix decimal /test_Inst/interpreter/register_A
+add wave -noupdate -radix decimal /test_Inst/interpreter/register_B
 add wave -noupdate /test_Inst/PC
 TreeUpdate [SetDefaultTree]
 WaveRestoreCursors {{Cursor 1} {19 ns} 0}
@@ -23,4 +22,4 @@ configure wave -griddelta 40
 configure wave -timeline 0
 configure wave -timelineunits ns
 update
-WaveRestoreZoom {4 ns} {43 ns}
+WaveRestoreZoom {13 ns} {52 ns}

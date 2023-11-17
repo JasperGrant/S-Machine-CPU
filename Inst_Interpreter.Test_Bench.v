@@ -7,7 +7,7 @@
 
 module test_Inst;
     reg [15:0] inst;
-    reg start;
+    reg clk;
 
     reg [15:0] data_in_memory;
     wire read_write_memory;
@@ -18,7 +18,7 @@ module test_Inst;
     wire [7:0] PC;
 
     InstInterpreter interpreter(
-        .start(start),
+        .clk(clk),
         .inst(inst),
 
         .data_in_memory(data_in_memory),
@@ -26,7 +26,6 @@ module test_Inst;
         .data_out_memory(data_out_memory),
         .addr(addr),
 
-        .done(done),
         .PC(PC)
 
         );
@@ -37,43 +36,43 @@ module test_Inst;
 
       //Test 1: Load value from immediate
       #5
-      inst = 16'b0000010000000001; start = 1;
-      #1
-      start = 0;
+      inst = 16'b0000010000000001; clk = 1;
       #5
-      inst = 16'b0000110000000001; start = 1;
-      #1
-      start = 0;
+      clk = 0;
+      #5
+      inst = 16'b0000110000000001; clk = 1;
+      #5
+      clk = 0;
       //Test 2: Add values of registers
       #5
-      inst = 16'b0100000000000000; start = 1;
-      #1
-      start = 0;
+      inst = 16'b0100000000000000; clk = 1;
+      #5
+      clk = 0;
       //Test 3: Subtract value of registers
       #5
-      inst = 16'b0101000000000000; start = 1;
-      #1
-      start = 0;
+      inst = 16'b0101000000000000; clk = 1;
+      #5
+      clk = 0;
       //Test 4: INC register B
       #5
-      inst = 16'b0010100000000001; start = 1;
-      #1
-      start = 0;
+      inst = 16'b0010100000000001; clk = 1;
+      #5
+      clk = 0;
       //Test 5: OR value of registers
       #5
-      inst = 16'b0110000000000000; start = 1;
-      #1
-      start = 0;
+      inst = 16'b0110000000000000; clk = 1;
+      #5
+      clk = 0;
       //Test 6: AND value of registers
       #5
-      inst = 16'b0111000000000000; start = 1;
-      #1
-      start = 0;
+      inst = 16'b0111000000000000; clk = 1;
+      #5
+      clk = 0;
       //Test 7: XOR value of registers
       #5
-      inst = 16'b1000000000000000; start = 1;
-      #1
-      start = 0;
+      inst = 16'b1000000000000000; clk = 1;
+      #5
+      clk = 0;
       #5
       ;
     
@@ -82,7 +81,7 @@ module test_Inst;
     
 
     task display;
-    #1 $display("Inst: %0h, start: %0h, done: %0h, PC: %0h", inst, start, done, PC);
+    #1 $display("Inst: %0h, clk: %0h, done: %0h, PC: %0h", inst, clk, done, PC);
     endtask
 
 endmodule
