@@ -8,4 +8,4 @@ vsim work.test_S_Machine -Lf 220model_ver -Lf altera_mf_ver -Lf verilog
 
 do S_Machine.do
 
-run 100ns
+run 240ns

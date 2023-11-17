@@ -27,7 +27,7 @@ module CPU(
 InstInterpreter interpreter(
     .clk(clk),
     .inst(inst),
-
+    .enable(enable),
     .data_in_memory(data_in_memory),
     .read_write_memory(read_write_memory),
     .data_out_memory(data_out_memory),

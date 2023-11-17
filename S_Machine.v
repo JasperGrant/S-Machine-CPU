@@ -41,6 +41,7 @@ module SMachine(
     );
 
     DataMemory data_memory(
+        .clk(clk),
         .read_write(read_write_memory),
         .data_in_memory(data_out_memory),
         .data_out_memory(data_in_memory),

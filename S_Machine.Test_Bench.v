@@ -16,51 +16,32 @@ module test_S_Machine;
         .count(count)
     );
 
+    always #5 clk = ~clk;
+
     initial begin
+        clk = 0;
         $dumpfile("wave.vcd");
         $dumpvars(0, test_S_Machine);
 
-     #5
-    enable = 1;
-    //Test 1: Load value from immediate
-    #5
-    clk = 1;
-    #5
-    clk = 0;
-    #5
-    clk = 1;
-    #5
-    clk = 0;
-    //Test 2: Add values of registers
-    #5
-    clk = 1;
-    #5
-    clk = 0;
-    //Test 3: Subtract value of registers
-    #5
-    clk = 1;
-    #5
-    clk = 0;
-    //Test 4: INC register B
-    #5
-    clk = 1;
-    #5
-    clk = 0;
-    //Test 5: OR value of registers
-    #5
-    clk = 1;
-    #5
-    clk = 0;
-    //Test 6: AND value of registers
-    #5
-    clk = 1;
-    #5
-    clk = 0;
-    //Test 7: XOR value of registers
-    #5
-    clk = 1;
-    #5
-    clk = 0;
+        //Test 0: Nothing happens when enable is off
+        #20
+        enable = 1;
+        //Test 1: Load value from immediate (2)
+        //Test 2: Add values of registers
+        //Test 3: Subtract value of registers
+        //Test 4: INC register B
+        //Test 5: OR value of registers
+        //Test 6: AND value of registers
+        //Test 7: XOR value of registers
+        //Test 8: Store value of register B in 01010101
+        //Test 9: Load value of 01010101 into register A
+        //Test 10: SHR
+        //Test 11: EXCH
+        //Test 12: CMP (3 lines)
+        //Test 13: MOV
+        //Test 14: SET
+        //Test 15: CLR
+        //Test 16: BR
     end
 
 

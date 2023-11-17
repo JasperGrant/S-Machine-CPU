@@ -9,6 +9,7 @@ module test_Inst;
     reg [15:0] inst;
     reg clk;
 
+    reg enable;
     reg [15:0] data_in_memory;
     wire read_write_memory;
     wire [15:0] data_out_memory;
@@ -20,6 +21,7 @@ module test_Inst;
     InstInterpreter interpreter(
         .clk(clk),
         .inst(inst),
+        .enable(enable),
 
         .data_in_memory(data_in_memory),
         .read_write_memory(read_write_memory),
@@ -34,6 +36,7 @@ module test_Inst;
       $dumpfile("wave.vcd");
       $dumpvars(0, test_Inst);
 
+      enable = 1;
       //Test 1: Load value from immediate
       #5
       inst = 16'b0000010000000001; clk = 1;
