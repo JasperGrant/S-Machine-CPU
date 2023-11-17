@@ -6,35 +6,34 @@
 `timescale 1ns / 1ns
 
 module test_FSM;
-    reg enable, done;
+    reg enable;
+    reg clk;
     wire [7:0] count;
-    wire start;
 
     StateMachine state_machine(
         .enable(enable),
-        .done(done),
-        .start(start),
+        .clk(clk),
         .count(count)
         );
 
     initial begin
         $dumpfile("wave.vcd");
         $dumpvars(0, test_FSM);
-        enable = 0; done = 0;
+        enable = 0; clk = 0;
         #5
         enable = 1;
-        #4
-        done = 1;
-        #1
-        done = 0;
-        #4
-        done = 1;
-        #1
-        done = 0;
-        #4
-        done = 1;
-        #1
-        done = 0;
+        #5
+        clk = 1;
+        #5
+        clk = 0;
+        #5
+        clk = 1;
+        #5
+        clk = 0;
+        #5
+        clk = 1;
+        #5
+        clk = 0;
         #5
         ;
     end

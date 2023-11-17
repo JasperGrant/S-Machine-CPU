@@ -26,9 +26,9 @@ States:
 
 */
 
-module StateMachine(enable,done,start,count);
-    input enable, done;
-    output reg start;
+module StateMachine(enable,clk,count);
+    input enable;
+    input clk;
 	output reg [7:0] count;	
 	//reg O;	
 	reg [2:0] state;
@@ -40,10 +40,9 @@ module StateMachine(enable,done,start,count);
 	initial begin
 		state = s0;
 		count = 0;
-		start = 0;
 	end
 
-    always@(done)	
+    always@(clk)	
 	begin	      
 		  begin		   
 		    case(state)
@@ -58,13 +57,9 @@ module StateMachine(enable,done,start,count);
 			   end
 			   
 			s1:			 
-			  begin
-                  start <= 1'b1;
-				  #2
-				  start <= 1'b0;			               	
+			  begin		               	
                   count = count+1;
-
-				  if(done == 1'b1) begin			  
+				  if(clk == 1'b1) begin			  
 				    state <= s1;
 				  end			
 				  else begin
@@ -73,13 +68,12 @@ module StateMachine(enable,done,start,count);
 			   end
 			   
 			s2:			 
-			  begin		 
-                 start <= 1'b0;	        //reset start since we don't want it to start       				
-				  if(done == 1'b1) begin			  
-				    state <= s1;	   // If done received go back to s1
+			  begin		      				
+				  if(clk == 1'b1) begin			  
+				    state <= s1;	   // If clk received go back to s1
 				  end	
 				  else begin
-				    state <= s2;       //stay in s2 if done not received  
+				    state <= s2;       //stay in s2 if clk not received  
 				  end                 
 			   end
                endcase
