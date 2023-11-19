@@ -1,6 +1,10 @@
 # S-Machine_CPU
 A simple 16 bit Instruction set Architecture for a CPU known as the S-Machine
 
+By Duncan Cameron and Jasper Grant
+
+Project by Larry Hughes
+
 ![image](SystemArchitectureRevised.drawio.png)
 
 • 16-bit CPU
