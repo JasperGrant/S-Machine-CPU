@@ -1,5 +1,5 @@
 # S-Machine_CPU
-A simple 16 bit Instruction set Architecture for a CPU known as the S-Machine
+A simple 16-bit Instruction set Architecture for a CPU known as the 'S-Machine'
 
 By Duncan Cameron and Jasper Grant
 
@@ -63,7 +63,7 @@ Set all ZNC bits
 ### Test 15
 Clear all ZNC bits
 ### Test 16
-Increment and then subtract registers to values A=-2 and B=1 then Add 1, next loop to address of add 1 if Z or N bits are set. They will be because of the -1 in register A, then Add 1, next loop to address of add 1 if Z or N bits are set. They will be because of the 0 in register A, then Add 1, next loop to address of add 1 if Z or N bits are set. They will not be because of the 1 in register A,
+Increment and then subtract registers to values A=-2 and B=1 then Add 1, next loop to address of add 1 if Z or N bits are set. They will be because of the -1 in register A, then Add 1, next loop to address of add 1 if Z or N bits are set. They will be because of the 0 in register A, then Add 1, next loop to address of add 1 if Z or N bits are set. They will not be because of the 1 in register A
 
 
 Annotated version to be added closer to the project's due date
