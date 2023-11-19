@@ -27,6 +27,7 @@ module CPU (
   	reg [15:0] register_B;
 
     reg [15:0] register_temp = 0;
+    reg Execute; //temp for Branch
 
     reg [7:0] carry_matrix = 8'b11010100;// TODO: Could this be a parameter?
 
@@ -172,6 +173,43 @@ module CPU (
                     read_write_memory = 1;
                     addr = inst[8:0];
                     data_out_memory = inst[11] ? register_B : register_A;
+                end
+                4'b0011: //Transfer of control or BR instruciton
+                begin
+                    Execute = 0;
+                    if (inst[11] == 0) begin
+                        // BZ, BN, BC plus others
+                        if (inst[10] == Z |
+                        inst[9] == N |
+                        inst[8] == C) begin
+                        Execute = 1;
+                        end
+                        else
+                        // 0 0 0 0
+                        if (inst[10] == 0 &&
+                            inst[9] == 0 &&
+                            inst[8] == 0)begin
+                            Execute = 1;
+                        end
+                    end
+                    else begin
+                        // BNZ, BNN, BNC
+                        if ((inst[10] == 1 && Z == 0) |
+                            (inst[9] == 1 && N == 0) |
+                            (inst[8] == 1 && C == 0)) begin
+                            Execute = 1;
+                        end
+                        // 1 1 1 1
+                        if (inst[10] == 1 &&
+                            inst[9] == 1 &&
+                            inst[8] == 1) begin
+                            Execute = 1;
+                        end
+                    end
+
+                    if (Execute == 1) begin
+                    PC = inst[7:0];
+                    end
                 end
             endcase
         end
