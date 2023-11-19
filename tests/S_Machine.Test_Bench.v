@@ -8,12 +8,10 @@
 module test_S_Machine;
     reg clk;
     reg enable;
-    wire [7:0] count;
 
     SMachine smachine(
         .clk(clk),
-        .enable(enable),
-        .count(count)
+        .enable(enable)
     );
 
     always #5 clk = ~clk;

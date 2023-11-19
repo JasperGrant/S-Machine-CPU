@@ -5,7 +5,7 @@
 
 `timescale 1ns / 1ns
 
-module test_Inst;
+module test_CPU;
     reg [15:0] inst;
     reg clk;
 
@@ -18,7 +18,7 @@ module test_Inst;
     wire done;
     wire [7:0] PC;
 
-    InstInterpreter interpreter(
+    CPU cpu(
         .clk(clk),
         .inst(inst),
         .enable(enable),
