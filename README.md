@@ -20,21 +20,3 @@ and )
 
 ![image](https://github.com/JasperGrant/S-Machine-CPU/assets/72110751/b3713dc9-4c41-4c3b-97ac-0c3d02684f96)
 
-# TODO
-
-FSM.tcl
-
-FSM.do
-
-CPU.tcl
-
-CPU.do
-
-Add br
-
-Fool with Timing
-
-Test a lot
-
-Devices?
-
