@@ -9,8 +9,8 @@ A simple 16 bit Instruction set Architecture for a CPU known as the S-Machine
 
 • Two 16-bit arithmetic registers
 
-• Range of operations (+, -, &, |,
-and )
+• Range of operations (+, -, AND, OR,
+and XOR)
 
 • Up to 256 16-bit instructions
 

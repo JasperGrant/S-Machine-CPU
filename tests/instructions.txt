@@ -1,33 +1,58 @@
+//Test 0: Enable turned off
+
+//Test 1: Load 1 immediate into registers A and B
 0000010000000001
 0000110000000001
 
+//Test 2: Add value of registers together into register A (1+1=2)
 0100000000000000
 
+//Test 3: Subtract value of registers together into register A (2-1=1)
 0101000000000000
 
+//Test 4: Increment register B by 1 (1+1=2)
 0010100000000001
 
+//Test 5: OR value of registers
 0110000000000000
 
+//AND value of registers
 0111000000000000
 
+//XOR value of registers
 1000000000000000
 
+//Test 8: Store value of register B in 01010101
 0001100010101010
 
+//Test 9: Load value of 01010101 into register A
 0000000010101010
 
+//Test 10: SHR
 1001000000000000
 1001000000000000
 
+//Test 11: EXCH
 1011000000000000
 
+//Test 12: CMP 2 and 0 then exchange and compare again
 1100000000000000
 1011000000000000
 1100000000000000
 
+//Test 13: Move register A into register B
 1010000000000000
 
+//Test 14: Set ZNC bits
 1101011100000000
 
+//Test 15: Clear ZNC bits
 1110011100000000
+
+//Test 16: Increment B to be 1, subtract 2 from A, add 1 to A, loop if Z or N, add 1 to A, loop if Z or N, do not break
+0010100000000001
+0101000000000000
+0101000000000000
+0100000000000000
+0011011000010101
+
