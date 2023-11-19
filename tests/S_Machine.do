@@ -17,12 +17,12 @@ add wave -noupdate -label addr /test_S_Machine/smachine/data_memory/addr
 add wave -noupdate -label data_in /test_S_Machine/smachine/data_memory/data_in_memory
 add wave -noupdate -label data_out /test_S_Machine/smachine/data_memory/data_out_memory
 add wave -noupdate -label read_write /test_S_Machine/smachine/data_memory/read_write
-add wave -noupdate -label {memory[170]} {/test_S_Machine/smachine/data_memory/memory[170]}
+add wave -noupdate -label {memory[170]} -expand {/test_S_Machine/smachine/data_memory/memory[170]}
 TreeUpdate [SetDefaultTree]
-WaveRestoreCursors {{Cursor 1} {48 ns} 0} {{Cursor 2} {0 ns} 0}
-quietly wave cursor active 1
+WaveRestoreCursors {{Cursor 1} {113 ns} 0} {{Cursor 2} {27 ns} 0}
+quietly wave cursor active 2
 configure wave -namecolwidth 318
-configure wave -valuecolwidth 40
+configure wave -valuecolwidth 253
 configure wave -justifyvalue left
 configure wave -signalnamewidth 0
 configure wave -snapdistance 10
@@ -35,4 +35,4 @@ configure wave -griddelta 40
 configure wave -timeline 0
 configure wave -timelineunits ns
 update
-WaveRestoreZoom {0 ns} {240 ns}
+WaveRestoreZoom {12 ns} {202 ns}

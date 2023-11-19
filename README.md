@@ -1,7 +1,7 @@
 # S-Machine_CPU
 A simple 16 bit Instruction set Architecture for a CPU known as the S-Machine
 
-![image](https://github.com/JasperGrant/S-Machine-CPU/assets/72110751/9e271fee-1974-4a6c-b39b-ebdd6b4c9f13)
+![image](SystemArchitectureRevised.drawio.png)
 
 • 16-bit CPU
 

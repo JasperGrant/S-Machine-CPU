@@ -9,11 +9,11 @@ module DataMemory(
     input clk,
     input read_write,
     input [15:0] data_in_memory,
-    input [7:0] addr,
+    input [8:0] addr,
     output reg [15:0] data_out_memory
 );
 
-    reg [15:0] memory [255:0];
+    reg [15:0] memory [511:0];
 
     always@(addr, read_write) begin
         if(read_write == 1'b0) begin

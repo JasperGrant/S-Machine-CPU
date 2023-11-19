@@ -16,7 +16,7 @@ module SMachine(
 
     wire read_write_memory;
     wire [15:0] data_in_memory;
-    wire [7:0] addr;
+    wire [8:0] addr;
     wire [15:0] data_out_memory;
 
     wire [15:0] inst;

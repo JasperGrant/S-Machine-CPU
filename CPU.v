@@ -13,7 +13,7 @@ module CPU (
     input [15:0] data_in_memory,
     output reg read_write_memory,
     output reg [15:0] data_out_memory,
-    output reg [7:0] addr,
+    output reg [8:0] addr,
 
     output reg [7:0] PC
 
@@ -149,7 +149,7 @@ module CPU (
                         else begin
                             //Fool with timing
                             read_write_memory = 0;
-                            addr = inst[7:0];
+                            addr = inst[8:0];
                             #3
                             register_B = data_in_memory;
                         end
@@ -161,7 +161,7 @@ module CPU (
                         else begin
                             //Fool with timing
                             read_write_memory = 0;
-                            addr = inst[7:0];
+                            addr = inst[8:0];
                             #3
                             register_A = data_in_memory;
                         end
@@ -170,7 +170,7 @@ module CPU (
                 4'b0001: //ST instruction
                 begin
                     read_write_memory = 1;
-                    addr = inst[7:0];
+                    addr = inst[8:0];
                     data_out_memory = inst[11] ? register_B : register_A;
                 end
             endcase
