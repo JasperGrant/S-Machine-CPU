@@ -148,7 +148,7 @@ module CPU (
                         register_B = inst[9] ? {inst[7:0], 8'b00000000} : {8'b00000000, inst[7:0]};
                         end
                         else begin
-                            //Fool with timing
+                            //Fool with timing. Take out magical #3
                             read_write_memory = 0;
                             addr = inst[8:0];
                             #3
@@ -160,7 +160,7 @@ module CPU (
                         register_A = inst[9] ? {inst[7:0], 8'b00000000} : {8'b00000000, inst[7:0]};
                         end
                         else begin
-                            //Fool with timing
+                            //Fool with timing. Take out magical #3
                             read_write_memory = 0;
                             addr = inst[8:0];
                             #3
