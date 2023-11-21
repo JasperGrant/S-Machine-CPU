@@ -1,0 +1,4 @@
+//LD from addr 4 to register A
+0000000000000100
+//ST from register A to addr 0
+0001000000000000

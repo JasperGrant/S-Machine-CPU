@@ -5,3 +5,9 @@ vsim.wlf
 wave.vcd
 wave.do
 /tests/work
+db
+incremental_db
+output_files
+c5_pin_model_dump.txt
+S_Machine.qpf
+Smachine.qsf

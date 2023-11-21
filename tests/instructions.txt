@@ -56,3 +56,11 @@
 0100000000000000
 0011011100010110
 
+//Test 17: Store 1 in addr 0 to turn on LED
+0001000000000000
+
+//Test 18: Branch unconditionally infinitely
+0011000000011001
+
+
+

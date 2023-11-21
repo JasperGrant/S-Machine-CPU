@@ -5,13 +5,11 @@
 
 `timescale 1ns / 1ns
 
-`include "CPU.v"
-`include "Inst_Memory.v"
-`include "Data_Memory.v"
-
 module SMachine(
     input enable,
-    input clk
+    input clk,
+    input switch,
+    output led
 );
 
     wire read_write_memory;
@@ -44,7 +42,9 @@ module SMachine(
         .read_write(read_write_memory),
         .data_in_memory(data_out_memory),
         .data_out_memory(data_in_memory),
-        .addr(addr)
+        .addr(addr),
+        .led(led),
+        .switch(switch)
     );
 
 endmodule
