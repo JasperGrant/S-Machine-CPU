@@ -5,7 +5,7 @@
 
 `timescale 1ns / 1ns
 
-module test_S_Machine;
+module test_S_Machine_Devices;
     reg clk;
     reg enable;
     reg switch;
@@ -44,6 +44,10 @@ module test_S_Machine;
         //Test 14: SET
         //Test 15: CLR
         //Test 16: BR
+        #100
+        switch = 1;
+        #100
+        switch = 0;
     end
 
 

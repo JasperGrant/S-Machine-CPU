@@ -15,7 +15,7 @@ module InstMemory(
 
     initial begin
         //Fill memory from instructions.txt
-        $readmemb("tests/switch.txt",memory); //Assuming name of txt is data.txt
+        $readmemb("instructions.txt",memory); //Assuming name of txt is data.txt
     end
 
     assign inst = memory[PC];

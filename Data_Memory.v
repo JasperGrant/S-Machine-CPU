@@ -18,6 +18,7 @@ module DataMemory(
     reg [15:0] memory [511:0];
 
     always@(addr, read_write) begin
+        memory[4][0] = switch;
         if(read_write == 1'b0) begin
             data_out_memory = memory[addr];
         end
@@ -28,8 +29,6 @@ module DataMemory(
 
     //Devices Assignments
     assign led = memory[0][0];
-
-    always memory[4][0] = switch;
 
 
 endmodule

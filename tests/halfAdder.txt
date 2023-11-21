@@ -1,0 +1,17 @@
+//Test 20: Half Adder implemented on the S-Machine CPU
+//LD from addr 4 to register A
+0000000000000100
+//LD from addr 5 to register B
+0000100000000101
+//XOR
+1000000000000000
+//ST in addr 0
+0001000000000000
+//LD from addr 4 to register A
+0000000000000100
+//AND
+0111000000000000
+//ST in addr 1
+0001000000000001
+//Branch back to 0
+0011000000000000

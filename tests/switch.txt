@@ -1,4 +1,7 @@
+//Test 19: Infinite loop where LED 0 is controlled by Switch 0
 //LD from addr 4 to register A
 0000000000000100
 //ST from register A to addr 0
 0001000000000000
+//Branch back to 0
+0011000000000000
