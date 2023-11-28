@@ -19,13 +19,19 @@ add wave -noupdate -label data_out /test_S_Machine/smachine/data_memory/data_out
 add wave -noupdate -label read_write /test_S_Machine/smachine/data_memory/read_write
 add wave -noupdate -label {memory[170]} {/test_S_Machine/smachine/data_memory/memory[170]}
 add wave -noupdate -divider Devices
-add wave -noupdate -label {LED 0} /test_S_Machine/smachine/data_memory/led
-add wave -noupdate -label {Switch 0} /test_S_Machine/smachine/switch
+add wave -noupdate -label led0 /test_S_Machine/led0
+add wave -noupdate -label led1 /test_S_Machine/led1
+add wave -noupdate -label switch0 /test_S_Machine/switch0
+add wave -noupdate -label switch1 /test_S_Machine/switch1
+add wave -noupdate -label {led0 memory} {/test_S_Machine/smachine/data_memory/memory[0]}
+add wave -noupdate -label {led1 memory} {/test_S_Machine/smachine/data_memory/memory[1]}
+add wave -noupdate -label {switch0 memory} {/test_S_Machine/smachine/data_memory/memory[4]}
+add wave -noupdate -label {switch1 memory} {/test_S_Machine/smachine/data_memory/memory[5]}
 TreeUpdate [SetDefaultTree]
-WaveRestoreCursors {{Cursor 1} {383 ns} 0} {{Cursor 2} {27 ns} 0}
-quietly wave cursor active 1
-configure wave -namecolwidth 318
-configure wave -valuecolwidth 253
+WaveRestoreCursors {{Cursor 1} {725 ns} 0} {{Cursor 2} {231 ns} 0}
+quietly wave cursor active 2
+configure wave -namecolwidth 107
+configure wave -valuecolwidth 103
 configure wave -justifyvalue left
 configure wave -signalnamewidth 0
 configure wave -snapdistance 10
@@ -38,4 +44,4 @@ configure wave -griddelta 40
 configure wave -timeline 0
 configure wave -timelineunits ns
 update
-WaveRestoreZoom {220 ns} {410 ns}
+WaveRestoreZoom {0 ns} {850 ns}

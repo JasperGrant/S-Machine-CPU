@@ -10,15 +10,27 @@ module DataMemory(
     input read_write,
     input [15:0] data_in_memory,
     input [8:0] addr,
-    input switch,
+    input switch0,
+	input switch1,
     output reg [15:0] data_out_memory,
-    output led
+    output led0,
+	output led1
 );
 
     reg [15:0] memory [511:0];
 
+    //Switches default to 0
+    initial begin
+        memory[4] = 16'b0;
+		memory[5] = 16'b0;
+    end
+
     always@(addr, read_write) begin
-        memory[4][0] = switch;
+
+        //Input Device Assignments
+        memory[4] = switch0;
+        memory[5] = switch1;
+
         if(read_write == 1'b0) begin
             data_out_memory = memory[addr];
         end
@@ -27,8 +39,9 @@ module DataMemory(
         end
     end
 
-    //Devices Assignments
-    assign led = memory[0][0];
+    //Output Device Assignments
+    assign led0 = memory[0];
+	assign led1 = memory[1];
 
 
 endmodule

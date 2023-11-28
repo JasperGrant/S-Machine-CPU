@@ -8,8 +8,10 @@
 module SMachine(
     input enable,
     input clk,
-    input switch,
-    output led
+    input switch0,
+	input switch1,
+    output led0,
+	output led1
 );
 
     wire read_write_memory;
@@ -43,8 +45,10 @@ module SMachine(
         .data_in_memory(data_out_memory),
         .data_out_memory(data_in_memory),
         .addr(addr),
-        .led(led),
-        .switch(switch)
+        .led0(led0),
+		.led1(led1),
+        .switch0(switch0),
+		.switch1(switch1)
     );
 
 endmodule

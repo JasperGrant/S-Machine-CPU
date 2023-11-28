@@ -5,17 +5,21 @@
 
 `timescale 1ns / 1ns
 
-module test_S_Machine;
+module test_S_Machine_2;
     reg clk;
     reg enable;
-    reg switch;
-    wire led;
+    reg switch0;
+    reg switch1;
+    wire led0;
+    wire led1;
 
     SMachine smachine(
         .clk(clk),
         .enable(enable),
-        .led(led),
-        .switch(switch)
+        .led0(led0),
+        .led1(led1),
+        .switch0(switch0),
+        .switch1(switch1)
     );
 
     always #5 clk = ~clk;
