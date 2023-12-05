@@ -1,0 +1,13 @@
+//This code should test 
+
+//LD from imdiate value of decimal value 4 to register A
+0000010000000100
+//LD from imidiate value of decimal value 1 to register B
+0000110000000001
+//SUB RB from RA (store in RA) ()
+0101000000000000
+//Branch to address zero if the Z register is not 0
+//X bit is 1 so that we check and BNZ,BNN,BNC
+//if Z register is 0 and  
+0011110000000000
+
