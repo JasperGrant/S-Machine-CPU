@@ -15,7 +15,7 @@ The design of the S-Machine was optimized for usability and simplicity over fait
 The main execution happening on each clock cycle is reading in the current 16-bit instruction, and then using a long switch case to decode the instruction. In the same cycle the instruction is then executed based on parameters and changes are made to the registers A and B along with status bits C, N, and Z all stored inside the CPU. The CPU only changes outputs when PC is incremented or branched, or when data memory is accessed for reading or writing.
  
 ## Instructions
-![Alt text](diagrams/SystemArchitectureRevised.drawio.png)
+![Alt text](diagrams/instructions.png)
 
 Instruction decoding and executing were wrapped into a single stage in this implementation of the S-Machine. This was done because the only reason to do these steps separately is to emulate the clock cycles of a real CPU. Due to the accuracy of a real machine not being a priority, it was decided this would not be needed.
 
