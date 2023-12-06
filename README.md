@@ -15,7 +15,7 @@ The design of the S-Machine was optimized for usability and simplicity over fait
 The main execution happening on each clock cycle is reading in the current 16-bit instruction, and then using a long switch case to decode the instruction. In the same cycle the instruction is then executed based on parameters and changes are made to the registers A and B along with status bits C, N, and Z all stored inside the CPU. The CPU only changes outputs when PC is incremented or branched, or when data memory is accessed for reading or writing.
  
 ## Instructions
-![Alt text](image.png)
+![Alt text](diagrams/SystemArchitectureRevised.drawio.png)
 Instruction decoding and executing were wrapped into a single stage in this implementation of the S-Machine. This was done because the only reason to do these steps separately is to emulate the clock cycles of a real CPU. Due to the accuracy of a real machine not being a priority, it was decided this would not be needed.
 
  The only change made to the instructions, as written, was adding a 9-bit address to LD and ST when referring to memory. This brings the data memory up to the requested 512 words although it is interesting to note that no more than 256 words of data memory can ever be written to in a single machine code program. This could be fixed by either upgrading the instruction memory to 512 words, adding a pointer functionality, or switching to a Princeton.
@@ -28,6 +28,7 @@ The data memory of this project is also incredibly simple. Its storage mechanism
  
 ## Branching Logic
 The branching logic of this implementation of the S-Machine follows the provided pseudocode. It should be noted that this pseudocode means that when bit 11 is not set, the C, N, and Z bits must match bits [10:8] of the instruction exactly to allow a branch. This is an asymmetrical design because when bit 11 (the NOT flag) is set, all three bits C, N, and Z bits do not have to be inverse of bits [10:8]. Only one needs to be inverse. It should also be noted that the two cases for unconditional branching are provided although this seems to only increase confusion by providing two instructions that do the same thing. The branching logic is illustrated in the following flow chart.
+
  ![Alt text](diagrams/BRFlowdrawio.png)
 ## Devices
 A feature of this S-Machine implementation outside the scope of the original project is the added device support. The devices are implemented with direct memory access (DMA) meaning each device has a dedicated address in memory. The input device’s addresses contain binary values based on the reading of the chosen pin, and the output devices reflect the output values of the chosen pins based on what binary values have been loaded into their addresses. The current implementation is two LEDs and two switches to easily emulate logical gates.
