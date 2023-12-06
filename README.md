@@ -16,6 +16,7 @@ The main execution happening on each clock cycle is reading in the current 16-bi
  
 ## Instructions
 ![Alt text](diagrams/SystemArchitectureRevised.drawio.png)
+
 Instruction decoding and executing were wrapped into a single stage in this implementation of the S-Machine. This was done because the only reason to do these steps separately is to emulate the clock cycles of a real CPU. Due to the accuracy of a real machine not being a priority, it was decided this would not be needed.
 
  The only change made to the instructions, as written, was adding a 9-bit address to LD and ST when referring to memory. This brings the data memory up to the requested 512 words although it is interesting to note that no more than 256 words of data memory can ever be written to in a single machine code program. This could be fixed by either upgrading the instruction memory to 512 words, adding a pointer functionality, or switching to a Princeton.
@@ -24,6 +25,7 @@ Instruction decoding and executing were wrapped into a single stage in this impl
 The instruction memory of this project is very simple. Its storage mechanism is a 256 16-bit word register. It takes a PC and returns the instruction at this address. Due to the Harvard architecture and no component waiting solely for new instructions, from instruction memory, this component can be asynchronous and process the next instruction as soon as it receives a PC. A priority was made throughout this project to make the writing and loading of the S-Machine machine code practical and intuitive. It is for this reason that the instruction memory is loaded from a text file that allows comments along with the binary. Changing the machine code run by the S-Machine is as easy as changing the file name to be loaded into instruction memory.
 ## Data Memory
 The data memory of this project is also incredibly simple. Its storage mechanism is a 512 16-bit word register. From the CPU side, an address, a read/write value, and data in/out buses are provided to the data memory. The data memory then makes the choice illustrated in the following diagram to decide how to proceed. The data memory also handles device changes at this level. It only writes to input device addresses in this decision-making process although it is constantly reading from input devices.
+
  ![Alt text](diagrams/DataMemory.png)
  
 ## Branching Logic
