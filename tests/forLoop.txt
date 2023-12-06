@@ -1,5 +1,4 @@
-//This code should test 
-
+//Test 21: Nested For loop in While loop
 //LD from imdiate value of decimal value 4 to register A
 0000010000000100
 //LD from imidiate value of decimal value 1 to register B
@@ -9,5 +8,6 @@
 //Branch to address zero if the Z register is not 0
 //X bit is 1 so that we check and BNZ,BNN,BNC
 //if Z register is 0 and  
-0011110000000000
-
+0011110000000010
+//Branch back to 0
+0011111100000000
