@@ -4,7 +4,7 @@
 
 `timescale 1ns / 1ns
 
-module test_S_Machine_2;
+module test_S_Machine;
     reg clk;
     reg enable;
     reg switch0;
@@ -31,6 +31,14 @@ module test_S_Machine_2;
         //Test 0: Nothing happens when enable is off
         #20
         enable = 1;
+        
+
+        #20
+        enable = 1;
+        #100
+        switch0 = 1;
+        #100
+        switch0 = 0;
         //Test 1: Load value from immediate (2)
         //Test 2: Add values of registers
         //Test 3: Subtract value of registers
