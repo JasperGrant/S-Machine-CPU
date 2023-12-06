@@ -1,6 +1,6 @@
 //S-Machine Test Bench Implementation for S-Machine CPU
-//By Duncan Cameron and Jasper Grant
-//B00819540, B00829263 
+//By Duncan Cameron B00819540 and Jasper Grant B00829263
+//To use change line 13 of S_Bench.tcl from 'run 400ns' to 'run 40000ns'
 //2023-11-07
 
 `timescale 1ns / 1ns

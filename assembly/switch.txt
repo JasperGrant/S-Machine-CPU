@@ -1,4 +1,6 @@
 //Test 19: Infinite loop where LED 0 is controlled by Switch 0
+//By Duncan Cameron B00819540 and Jasper Grant B00829263
+
 //LD from addr 4 to register A
 0000000000000100
 //ST from register A to addr 0

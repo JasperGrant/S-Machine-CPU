@@ -1,4 +1,6 @@
 //Test 20: Half Adder implemented on the S-Machine CPU
+//By Duncan Cameron B00819540 and Jasper Grant B00829263
+
 //LD from addr 4 to register A
 0000000000000100
 //LD from addr 5 to register B

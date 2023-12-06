@@ -1,6 +1,5 @@
 //Inst Interpreter Test Bench Implementation for S-Machine CPU
-//By Duncan Cameron and Jasper Grant
-//B00829263
+//By Duncan Cameron B00819540 and Jasper Grant B00829263
 //2023-10-31
 
 `timescale 1ns / 1ns

@@ -1,4 +1,6 @@
 //Test 21: Nested For loop in While loop
+//By Duncan Cameron B00819540 and Jasper Grant B00829263
+
 //LD from imdiate value of decimal value 4 to register A
 0000010000000100
 //LD from imidiate value of decimal value 1 to register B

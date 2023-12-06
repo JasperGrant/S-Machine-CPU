@@ -1,3 +1,5 @@
+//By Duncan Cameron B00819540 and Jasper Grant B00829263
+
 //Test 0: Enable turned off
 
 //Test 1: Load 1 immediate into registers A and B

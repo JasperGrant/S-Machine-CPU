@@ -1,6 +1,5 @@
 //Instruction Memory Implementation for S-Machine CPU
-//By Duncan Cameron and Jasper Grant
-//B00829263
+//By Duncan Cameron B00819540 and Jasper Grant B00829263
 //2023-11-01
 
 `timescale 1ns / 1ns
@@ -15,7 +14,7 @@ module InstMemory(
 
     initial begin
         //Fill memory from instructions.txt
-        $readmemb("halfAdder.txt",memory); //Assuming name of txt is data.txt
+        $readmemb("../assembly/instructions.txt",memory); //Assuming name of txt is data.txt
     end
 
     assign inst = memory[PC];

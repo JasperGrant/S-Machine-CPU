@@ -5,7 +5,7 @@ By Duncan Cameron and Jasper Grant
 
 Project by Larry Hughes
 
-![image](SystemArchitectureRevised.drawio.png)
+![image](diagrams/SystemArchitectureRevised.drawio.png)
 
 • 16-bit CPU
 
